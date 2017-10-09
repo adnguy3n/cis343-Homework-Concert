@@ -351,13 +351,24 @@ bool concert::operator<(const concert& other) const
 	}
 
 	//If the day the other concert takes place is
-	//on the same day or after this concert's, 
-	//then return true.
-	if (other.date.tm_mday >= date.tm_mday)
+	//after this concert's, then return true.
+	if (other.date.tm_mday > date.tm_mday)
 	{
 		return true;
 	}
 
+	//If the day is the same continue on.
+
+	//If the desire rating for the other concert 
+	//is lower than this concert's, then return true.
+	if (other.desire < desire)
+	{
+		return true;
+	}
+
+	//Otherwise, return false. Desire of the other
+	//concert is equal to or greater than this concert.
+	return false;
 }
 
 /******************************************************
