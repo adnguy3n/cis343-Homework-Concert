@@ -119,9 +119,15 @@ concert::concert(string s, vector<string> f)
 }
 
 /******************************************************
-* Constructor
-* @param
-* @return
+* Constructor that has all but the friend and date
+* parameters passed. Intializes concert with the given
+* values and default values for friend and date.
+*
+* @param string s, the name of the concert; 
+* int d, how much you want to attend said concert on
+* a scale of 1 to 10;
+* 
+* @return none.
 ******************************************************/
 concert::concert(string s, int d)
 {
@@ -132,9 +138,14 @@ concert::concert(string s, int d)
 }
 
 /******************************************************
+* Constructor that has parameters passed for concert
+* name and date. Initializes concert with the given
+* values and uses default values for friends and desire.
 *
-* @param
-* @return
+* @param string s, the name of the concert; 
+* tm n, the date of the concert.
+* 
+* @return none.
 ******************************************************/
 concert::concert(string s, tm n)
 {
@@ -145,9 +156,13 @@ concert::concert(string s, tm n)
 }
 
 /******************************************************
+* Constructor with only the concert name parameter
+* passed. Initializes concert with the given value and
+* default values for the remaining paremeters.
 *
-* @param
-* @return
+* @param string s, the name of the concert; 
+* 
+* @return none.
 ******************************************************/
 concert::concert(string s)
 {
@@ -158,9 +173,15 @@ concert::concert(string s)
 }
 
 /******************************************************
+* Constructor with all but the concert name parameter
+* passed. Initializes concert with the given values and
+* a default value for concert name.
+* 
+* @param vector f, a list of friends you want to bring;
+* int d, how much you want to attend said concert on
+* a scale of 1 to 10; tm n, the date of the concert.
 *
-* @param
-* @return
+* @return none.
 ******************************************************/
 concert::concert(vector<string> f, int d, tm n)
 {
@@ -171,9 +192,15 @@ concert::concert(vector<string> f, int d, tm n)
 }
 
 /******************************************************
+* Constructor with all but the concert name and date
+* parameters passed. Initializes concert with the given
+* values and default values for concert name and date.
+* 
+* @param vector f, a list of friends you want to bring;
+* int d, how much you want to attend said concert on
+* a scale of 1 to 10
 *
-* @param
-* @return
+* @return none.
 ******************************************************/
 concert::concert(vector<string> f, int d)
 {
@@ -184,9 +211,14 @@ concert::concert(vector<string> f, int d)
 }
 
 /******************************************************
+* Constructor with all but the concert name and desire
+* parameters passed. Initializes concert with the given
+* values and default values for concert name and desire.
 *
-* @param
-* @return
+* @param vector f, a list of friends you want to bring;
+* tm n, the date of the concert.
+* 
+* @return none.
 ******************************************************/
 concert::concert(vector<string> f, tm n)
 {
@@ -197,9 +229,13 @@ concert::concert(vector<string> f, tm n)
 }
 
 /******************************************************
+* Constructor with only the friend parameter passed.
+* Initializes concert with the given value for friends
+* and default values for the remaining parameters
 *
-* @param
-* @return
+* @param vector f, a list of friends you want to bring;
+* 
+* @return none.
 ******************************************************/
 concert::concert(vector<string> f)
 {
@@ -210,9 +246,14 @@ concert::concert(vector<string> f)
 }
 
 /******************************************************
+* Constructor with desire and date parameters passed.
+* Initializes concert with the given values and default
+* values for concert name and friend.
 *
-* @param
-* @return
+* @param int d, how much you want to attend said concert on
+* a scale of 1 to 10; tm n, the date of the concert.
+*
+* @return none.
 ******************************************************/
 concert::concert(int d, tm n)
 {
@@ -223,9 +264,14 @@ concert::concert(int d, tm n)
 }
 
 /******************************************************
+* Constructor with only the desire parameter passed.
+* Initializes concert with the given value for desire and
+* default values for the remaining parameters.
+* 
+* @param int d, how much you want to attend said concert on
+* a scale of 1 to 10
 *
-* @param
-* @return
+* @return none.
 ******************************************************/
 concert::concert(int d)
 {
@@ -236,9 +282,16 @@ concert::concert(int d)
 }
 
 /******************************************************
+* Constructor with only the date parameter passed.
+* Initializes with the given value for desire and default
+* values for the remaining parameters.
+* 
+* @param string s, the name of the concert; 
+* vector f, a list of friends you want to bring;
+* int d, how much you want to attend said concert on
+* a scale of 1 to 10; tm n, the date of the concert.
 *
-* @param
-* @return
+* @return none.
 ******************************************************/
 concert::concert(tm n)
 {
@@ -249,9 +302,11 @@ concert::concert(tm n)
 }
 
 /******************************************************
+* Sets the passed string as the concert name.
 *
-* @param
-* @return
+* @param string s, the name of the concert; 
+*
+* @return none.
 ******************************************************/
 void concert::setConcertName(string s)
 {
@@ -259,9 +314,11 @@ void concert::setConcertName(string s)
 }
 
 /******************************************************
+* Sets the passed vector as the list of friends.
 *
-* @param
-* @return
+* @param vector f, a list of friends you want to bring;
+*
+* @return none.
 ******************************************************/
 void concert::setFriend(vector<string> f)
 {
@@ -269,19 +326,36 @@ void concert::setFriend(vector<string> f)
 }
 
 /******************************************************
+* Sets the passed integer as the desire rating.
+* Must be between 1 to 10, including 1 and 10, or
+* desire is set to a default value.
 *
-* @param
-* @return
+* @param int d, how much you want to attend said concert on
+* a scale of 1 to 10
+* 
+* @return none.
 ******************************************************/
 void concert::setDesire(int d)
 {
+	//if d is greater than 10 or less than 1
+	//d is defaulted to 1.
+	if (d > 10 || d < 1)
+	{
+		cout << "Invalid value for desire.\n
+			<< "Defaulting value to 1\n.";
+		d = 1;
+	}
+	
 	desire = d;
 }
 
 /******************************************************
+* Sets the date of the concert to the passed date
+* parameter.
+* 
+* @param tm n, the date of the concert.
 *
-* @param
-* @return
+* @return none.
 ******************************************************/
 void concert::setDate(tm n)
 {
@@ -289,9 +363,11 @@ void concert::setDate(tm n)
 }
 
 /******************************************************
+* Get method for concertName. Returns concertName
+* upon being called.
 *
-* @param
-* @return
+* @param none.
+* @return string concertName
 ******************************************************/
 string concert::getConcertName()
 {
@@ -299,9 +375,11 @@ string concert::getConcertName()
 }
 
 /******************************************************
-*
-* @param
-* @return
+* Get method for friends. Returns friends upon being
+* called.
+* 
+* @param none. 
+* @return vector<string> friends
 ******************************************************/
 vector<string> concert::getfriend()
 {
@@ -309,9 +387,11 @@ vector<string> concert::getfriend()
 }
 
 /******************************************************
-*
-* @param
-* @return
+* Get method for desire. Returns desire upon being
+* called.
+* 
+* @param none.
+* @return int desire
 ******************************************************/
 int concert::getDesire()
 {
@@ -319,9 +399,10 @@ int concert::getDesire()
 }
 
 /******************************************************
+* Get method for date. Returns date upon being called.
 *
-* @param
-* @return
+* @param none.
+* @return tm date
 ******************************************************/
 tm concert::getDate()
 {
@@ -329,9 +410,15 @@ tm concert::getDate()
 }
 
 /******************************************************
+* Method used for sorting concerts.
+*
+* @param concert other, the other concert this concert
+* is being compared to.
 * 
-* @param
-* @return
+* @return True if the current concert is before the other 
+* concert. If the dates are the same, return true if the
+* desire for this concert is greater than the desire
+* for the other concert. Otherwise returns false.
 ******************************************************/
 bool concert::operator<(const concert& other) const
 {
@@ -396,9 +483,12 @@ bool concert::operator<(const concert& other) const
 }
 
 /******************************************************
+* Method for adding a friend to your list of friends to
+* take to the concert.
 *
-* @param
-* @return
+* @param string a, the name of the friend you want to take.
+* 
+* @return none.
 ******************************************************/
 void concert::addFriend(string a) {
 	friends.push_back(a);
